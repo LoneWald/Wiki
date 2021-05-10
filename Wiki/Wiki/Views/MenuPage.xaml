@@ -1,0 +1,39 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
+             xmlns:model="clr-namespace:Wiki.Models"
+             x:Class="Wiki.Views.MenuPage"
+             xmlns:local="clr-namespace:Wiki.ViewModels" 
+             Title="{Binding Title}"
+             Style="{StaticResource ContentPageStyle}">
+
+    <!--
+      x:DataType enables compiled bindings for better performance and compile time validation of binding expressions.
+      https://docs.microsoft.com/xamarin/xamarin-forms/app-fundamentals/data-binding/compiled-bindings
+    -->
+    <RefreshView x:DataType="local:MenuViewModel" Command="{Binding LoadSectionsCommand}" IsRefreshing="{Binding IsBusy, Mode=TwoWay}" Margin="20">
+        <CollectionView x:Name="ItemsListView"
+                ItemsSource="{Binding Sections}"
+                SelectionMode="None"
+                ItemsLayout="VerticalGrid, 3">
+            <CollectionView.ItemTemplate>
+                <DataTemplate>
+                    <StackLayout x:DataType="model:MenuSection">
+                        <StackLayout Style="{StaticResource IconStyle}">
+                            <Image Style="{StaticResource Image_icon}"  VerticalOptions="EndAndExpand" HorizontalOptions="Center" Source="{Binding PathToImage}"/>
+                            <BoxView BackgroundColor="Black" HeightRequest="1" />
+                            <Label TextColor="Black" VerticalOptions="StartAndExpand" HorizontalOptions="Center" Text="{Binding Text}" FontSize="18" />
+                        </StackLayout>
+                        <StackLayout.GestureRecognizers>
+                            <TapGestureRecognizer 
+                                NumberOfTapsRequired="1"
+                                Command="{Binding Source={RelativeSource AncestorType={x:Type local:MenuViewModel}}, Path=SectionTapped}"		
+                                CommandParameter="{Binding .}">
+                            </TapGestureRecognizer>
+                        </StackLayout.GestureRecognizers>
+                    </StackLayout>
+                </DataTemplate>
+            </CollectionView.ItemTemplate>
+        </CollectionView>
+    </RefreshView>
+</ContentPage>
