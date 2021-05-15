@@ -14,12 +14,12 @@ namespace Wiki.Services
         {
             menuSections = new List<MenuSection>()
             {
-                new MenuSection { Id = Guid.NewGuid().ToString(), Text = "Characters", PathToImage="icon_character.png" },
-                new MenuSection { Id = Guid.NewGuid().ToString(), Text = "Guilds", PathToImage="icon_guild.png" },
-                new MenuSection { Id = Guid.NewGuid().ToString(), Text = "Classes", PathToImage="icon_class.png"},
-                new MenuSection { Id = Guid.NewGuid().ToString(), Text = "Items", PathToImage="icon_item.png"},
-                new MenuSection { Id = Guid.NewGuid().ToString(), Text = "Accounts", PathToImage="icon_account.png"},
-                new MenuSection { Id = Guid.NewGuid().ToString(), Text = "Settings", PathToImage="icon_settings.png"}
+                new MenuSection { Id = "Characters", Text = "Characters", PathToImage="icon_character.png" },
+                new MenuSection { Id = "Guilds", Text = "Guilds", PathToImage="icon_guild.png" },
+                new MenuSection { Id = "Classes", Text = "Classes", PathToImage="icon_class.png"},
+                new MenuSection { Id = "Items", Text = "Items", PathToImage="icon_item.png"},
+                new MenuSection { Id = "Accounts", Text = "Accounts", PathToImage="icon_account.png"},
+                new MenuSection { Id = "Settings", Text = "Settings", PathToImage="icon_settings.png"}
                 
             };
         }

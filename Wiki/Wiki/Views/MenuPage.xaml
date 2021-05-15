@@ -22,12 +22,12 @@
                         <StackLayout Style="{StaticResource IconStyle}">
                             <Image Style="{StaticResource Image_icon}"  VerticalOptions="EndAndExpand" HorizontalOptions="Center" Source="{Binding PathToImage}"/>
                             <BoxView BackgroundColor="Black" HeightRequest="1" />
-                            <Label TextColor="Black" VerticalOptions="StartAndExpand" HorizontalOptions="Center" Text="{Binding Text}" FontSize="18" />
+                            <Label TextColor="{StaticResource TextColor}" VerticalOptions="StartAndExpand" HorizontalOptions="Center" Text="{Binding Text}" FontSize="18" />
                         </StackLayout>
                         <StackLayout.GestureRecognizers>
                             <TapGestureRecognizer 
                                 NumberOfTapsRequired="1"
-                                Command="{Binding Source={RelativeSource AncestorType={x:Type local:MenuViewModel}}, Path=SectionTapped}"		
+                                Command="{Binding Source={RelativeSource AncestorType={x:Type local:MenuViewModel}}, Path=SectionTapped}"
                                 CommandParameter="{Binding .}">
                             </TapGestureRecognizer>
                         </StackLayout.GestureRecognizers>
@@ -36,4 +36,5 @@
             </CollectionView.ItemTemplate>
         </CollectionView>
     </RefreshView>
+    <!--Command="{Binding Source={RelativeSource AncestorType={x:Type local:MenuViewModel}}, Path=SectionTapped}"-->
 </ContentPage>

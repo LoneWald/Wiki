@@ -14,7 +14,6 @@ namespace Wiki.Views
     public partial class MenuPage : ContentPage
     {
         MenuViewModel _viewModel;
-
         public MenuPage()
         {
             InitializeComponent();

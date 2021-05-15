@@ -9,6 +9,7 @@
         <ResourceDictionary>
             <Color x:Key="Primary">#652227</Color>
             <Color x:Key="Accent">#572127</Color>
+            <Color x:Key="TextColor">#000000</Color>
             
 
             <Style x:Key="IconStyle" TargetType="StackLayout">
@@ -20,7 +21,7 @@
 
             <Style x:Key="ContentPageStyle" TargetType="ContentPage">
                 <Setter Property="BackgroundColor" Value="{StaticResource Accent}" />
-                <Setter Property="Padding" Value="10, 20, 10, 40"></Setter>
+                <Setter Property="Padding" Value="10, 20, 10, 5"></Setter>
             </Style>
 
             <Style x:Key="Image_icon" TargetType="Image">
@@ -28,7 +29,7 @@
                 <Setter Property="WidthRequest" Value="32" />
                 <Setter Property="Aspect" Value="AspectFit"/>
             </Style>
-            
+
         </ResourceDictionary>        
     </Application.Resources>
 </Application>

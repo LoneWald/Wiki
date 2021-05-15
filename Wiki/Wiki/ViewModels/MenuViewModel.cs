@@ -71,6 +71,20 @@ namespace Wiki.ViewModels
 
             // This will push the ItemDetailPage onto the navigation stack
             await Shell.Current.GoToAsync($"{nameof(ItemDetailPage)}?{nameof(MenuSectionDetailViewModel.SectionId)}={section.Id}");
+            /*
+            switch (section.Id)
+            {
+                case "Characters":
+                    Routing.RegisterRoute(nameof(CharactersPage), typeof(CharactersPage));
+                    await Shell.Current.GoToAsync(nameof(CharactersPage));
+                    break;
+                case "Guilds":
+                    Console.WriteLine("Case 2");
+                    break;
+                default:
+                    Console.WriteLine("Default case");
+                    break;
+            }*/
         }
     }
 }

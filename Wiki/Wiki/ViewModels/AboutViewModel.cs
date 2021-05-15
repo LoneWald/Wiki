@@ -7,6 +7,7 @@ namespace Wiki.ViewModels
 {
     public class AboutViewModel : BaseViewModel
     {
+
         public AboutViewModel()
         {
             Title = "My Account";

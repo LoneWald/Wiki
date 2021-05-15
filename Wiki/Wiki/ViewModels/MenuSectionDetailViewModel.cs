@@ -14,6 +14,10 @@ namespace Wiki.ViewModels
         private string pathToImage;
         public string Id { get; set; }
 
+        public MenuSectionDetailViewModel()
+        {
+        }
+
         public string Text
         {
             get => text;
@@ -37,6 +41,12 @@ namespace Wiki.ViewModels
                 sectionId = value;
                 LoadItemId(value);
             }
+        }
+
+        public new string Title
+        {
+            get => sectionId;
+            set => SetProperty(ref sectionId, value);
         }
 
         public async void LoadItemId(string sectionId)
