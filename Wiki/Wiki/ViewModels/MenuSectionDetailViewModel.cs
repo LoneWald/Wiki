@@ -53,7 +53,7 @@ namespace Wiki.ViewModels
         {
             try
             {
-                var section = await DataStore.GetItemAsync(sectionId);
+                var section = await DataStoreMenuSection.GetItemAsync(sectionId);
                 Id = section.Id;
                 Text = section.Text;
                 PathToImage = section.PathToImage;

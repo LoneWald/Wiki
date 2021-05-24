@@ -7,11 +7,159 @@
              Title="{Binding Title}"
              Style="{StaticResource ContentPageStyle}">
 
-    <!--
-      x:DataType enables compiled bindings for better performance and compile time validation of binding expressions.
-      https://docs.microsoft.com/xamarin/xamarin-forms/app-fundamentals/data-binding/compiled-bindings
-    -->
-    <RefreshView x:DataType="local:MenuViewModel" Command="{Binding LoadSectionsCommand}" IsRefreshing="{Binding IsBusy, Mode=TwoWay}" Margin="20">
+    <ContentPage.Content>
+        <StackLayout>
+            <StackLayout>
+                <Grid Margin="20"
+                      RowSpacing="20">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="100"/>
+                    <RowDefinition Height="100"/>
+                    <RowDefinition Height="100"/>
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition />
+                    <ColumnDefinition />
+                    <ColumnDefinition />
+                </Grid.ColumnDefinitions>
+                    <StackLayout Grid.Column="0"
+                                 Grid.Row="0">
+                        <StackLayout Style="{StaticResource IconStyle}">
+                            <Image Style="{StaticResource Image_45}"
+                                   VerticalOptions="EndAndExpand"
+                                   HorizontalOptions="Center"
+                                   Source="icon_character.png" />
+                            <BoxView BackgroundColor="Black"
+                                     HeightRequest="1" />
+                            <Label TextColor="{StaticResource TextColor}"
+                                   VerticalOptions="StartAndExpand"
+                                   HorizontalOptions="Center"
+                                   Text="Characters"
+                                   FontSize="18" />
+                        </StackLayout>
+                        <StackLayout.GestureRecognizers>
+                            <TapGestureRecognizer NumberOfTapsRequired="1"
+                                                  Tapped="GoToAllCharactersPage"
+                                                  >
+                            </TapGestureRecognizer>
+                        </StackLayout.GestureRecognizers>
+                    </StackLayout>
+                    <StackLayout Grid.Column="1"
+                                 Grid.Row="0">
+                        <StackLayout Style="{StaticResource IconStyle}">
+                            <Image Style="{StaticResource Image_45}"
+                                   VerticalOptions="EndAndExpand"
+                                   HorizontalOptions="Center"
+                                   Source="icon_guild.png" />
+                            <BoxView BackgroundColor="Black"
+                                     HeightRequest="1" />
+                            <Label TextColor="{StaticResource TextColor}"
+                                   VerticalOptions="StartAndExpand"
+                                   HorizontalOptions="Center"
+                                   Text="Guilds"
+                                   FontSize="18" />
+                        </StackLayout>
+                        <StackLayout.GestureRecognizers>
+                            <TapGestureRecognizer NumberOfTapsRequired="1"
+                                                  Tapped="GoToAllGuildsPage">
+                            </TapGestureRecognizer>
+                        </StackLayout.GestureRecognizers>
+                    </StackLayout>
+                    <StackLayout Grid.Column="2"
+                                 Grid.Row="0">
+                        <StackLayout Style="{StaticResource IconStyle}">
+                            <Image Style="{StaticResource Image_45}"
+                                   VerticalOptions="EndAndExpand"
+                                   HorizontalOptions="Center"
+                                   Source="icon_class.png" />
+                            <BoxView BackgroundColor="Black"
+                                     HeightRequest="1" />
+                            <Label TextColor="{StaticResource TextColor}"
+                                   VerticalOptions="StartAndExpand"
+                                   HorizontalOptions="Center"
+                                   Text="Classes"
+                                   FontSize="18" />
+                        </StackLayout>
+                        <StackLayout.GestureRecognizers>
+                            <TapGestureRecognizer NumberOfTapsRequired="1"
+                                                  Tapped="GoToAllCharacterClassesPage">
+                            </TapGestureRecognizer>
+                        </StackLayout.GestureRecognizers>
+                    </StackLayout>
+                    <StackLayout Grid.Column="0"
+                                 Grid.Row="1">
+                        <StackLayout Style="{StaticResource IconStyle}">
+                            <Image Style="{StaticResource Image_45}"
+                                   VerticalOptions="EndAndExpand"
+                                   HorizontalOptions="Center"
+                                   Source="icon_profession.png" />
+                            <BoxView BackgroundColor="Black"
+                                     HeightRequest="1" />
+                            <Label TextColor="{StaticResource TextColor}"
+                                   VerticalOptions="StartAndExpand"
+                                   HorizontalOptions="Center"
+                                   Text="Professions"
+                                   FontSize="18" />
+                        </StackLayout>
+                        <StackLayout.GestureRecognizers>
+                            <TapGestureRecognizer NumberOfTapsRequired="1"
+                                                  Tapped="GoToAllCharacterProfessionsPage">
+                            </TapGestureRecognizer>
+                        </StackLayout.GestureRecognizers>
+                    </StackLayout>
+                    <StackLayout Grid.Column="1"
+                                 Grid.Row="1">
+                        <StackLayout Style="{StaticResource IconStyle}">
+                            <Image Style="{StaticResource Image_45}"
+                                   VerticalOptions="EndAndExpand"
+                                   HorizontalOptions="Center"
+                                   Source="icon_item.png" />
+                            <BoxView BackgroundColor="Black"
+                                     HeightRequest="1" />
+                            <Label TextColor="{StaticResource TextColor}"
+                                   VerticalOptions="StartAndExpand"
+                                   HorizontalOptions="Center"
+                                   Text="Items"
+                                   FontSize="18" />
+                        </StackLayout>
+                    </StackLayout>
+                    <StackLayout Grid.Column="2"
+                                 Grid.Row="1">
+                        <StackLayout Style="{StaticResource IconStyle}">
+                            <Image Style="{StaticResource Image_45}"
+                                   VerticalOptions="EndAndExpand"
+                                   HorizontalOptions="Center"
+                                   Source="icon_account.png" />
+                            <BoxView BackgroundColor="Black"
+                                     HeightRequest="1" />
+                            <Label TextColor="{StaticResource TextColor}"
+                                   VerticalOptions="StartAndExpand"
+                                   HorizontalOptions="Center"
+                                   Text="Accounts"
+                                   FontSize="18" />
+                        </StackLayout>
+                    </StackLayout>
+                    <StackLayout Grid.Column="0"
+                                 Grid.Row="2">
+                        <StackLayout Style="{StaticResource IconStyle}">
+                            <Image Style="{StaticResource Image_45}"
+                                   VerticalOptions="EndAndExpand"
+                                   HorizontalOptions="Center"
+                                   Source="icon_settings.png" />
+                            <BoxView BackgroundColor="Black"
+                                     HeightRequest="1" />
+                            <Label TextColor="{StaticResource TextColor}"
+                                   VerticalOptions="StartAndExpand"
+                                   HorizontalOptions="Center"
+                                   Text="Settings"
+                                   FontSize="18" />
+                        </StackLayout>
+                    </StackLayout>
+                </Grid>
+            </StackLayout>
+        </StackLayout>
+    </ContentPage.Content>
+    <!-- <RefreshView x:DataType="local:MenuViewModel" Command="{Binding LoadSectionsCommand}" IsRefreshing="{Binding IsBusy, Mode=TwoWay}" Margin="20">
         <CollectionView x:Name="ItemsListView"
                 ItemsSource="{Binding Sections}"
                 SelectionMode="None"
@@ -35,6 +183,7 @@
                 </DataTemplate>
             </CollectionView.ItemTemplate>
         </CollectionView>
-    </RefreshView>
+    </RefreshView> 
+    -->
     <!--Command="{Binding Source={RelativeSource AncestorType={x:Type local:MenuViewModel}}, Path=SectionTapped}"-->
 </ContentPage>

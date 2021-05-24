@@ -1,0 +1,83 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Wiki.Views.AllCharacterProfessionsPage"
+             xmlns:model="clr-namespace:Wiki.Models.ResponseModels"
+             xmlns:local="clr-namespace:Wiki.ViewModels"
+             Title="{Binding Title}"
+             Style="{StaticResource ContentPageStyle}">
+
+    <ContentPage.Resources>
+        <Style x:Key="ProfessionDescriptionStyle"
+               TargetType="Label">
+            <Setter Property="FontSize"
+                    Value="18" />
+            <Setter Property="TextColor"
+                    Value="{StaticResource TextColor}" />
+            <Setter Property="VerticalOptions"
+                    Value="Center" />
+            <Setter Property="HorizontalOptions"
+                    Value="CenterAndExpand" />
+            <Setter Property="HorizontalTextAlignment"
+                    Value="Center" />
+        </Style>
+
+    </ContentPage.Resources>
+    <ContentPage.Content>
+        <StackLayout>
+            <StackLayout Spacing="10">
+                <RefreshView x:DataType="local:AllCharacterProfessionsPageViewModel"
+                             x:Name="RefreshViewCharacterClasses"
+                             Command="{Binding  LoadProfessionsCommand}"
+                             IsRefreshing="{Binding IsBusy, Mode=TwoWay}"
+                             RefreshColor="{StaticResource Primary}"
+                             Padding="0, 10">
+                    <CollectionView x:Name="ItemsListView"
+                                    ItemsSource="{Binding Professions}"
+                                    SelectionMode="None">
+                        <CollectionView.ItemsLayout>
+                            <LinearItemsLayout Orientation="Vertical"
+                                               ItemSpacing="10" />
+                        </CollectionView.ItemsLayout>
+                        <CollectionView.ItemTemplate>
+                            <DataTemplate>
+                                <Frame BorderColor="{StaticResource TextColor}"
+                                       x:DataType="model:CharacterProfessionsApiResponseModel"
+                                       CornerRadius="15"
+                                       Padding="20, 5, 20, 5"
+                                       BackgroundColor="{StaticResource Accent}">
+                                    <StackLayout>
+                                        <StackLayout Orientation="Horizontal"
+                                                     Padding="10, 10, 20, 10">
+                                            <Label x:Name="CharacterClassName"
+                                                   Text="{Binding Name}"
+                                                   FontSize="30"
+                                                   Style="{StaticResource ProfessionDescriptionStyle}" />
+                                        </StackLayout>
+                                        <BoxView BackgroundColor="Black"
+                                                 HeightRequest="1"
+                                                 VerticalOptions="Center"
+                                                 HorizontalOptions="FillAndExpand" />
+                                        <StackLayout Padding="10, 10, 20, 10">
+                                            <Label Text="{Binding Description}"
+                                                   FontSize="20"
+                                                   Style="{StaticResource ProfessionDescriptionStyle}">
+                                            </Label>
+                                        </StackLayout>
+                                    </StackLayout>
+                                </Frame>
+                            </DataTemplate>
+                        </CollectionView.ItemTemplate>
+                    </CollectionView>
+                </RefreshView>
+                <ImageButton Source="icon_plus.png"
+                             HorizontalOptions="CenterAndExpand"
+                             Clicked="CreateCharacterProfessionClick"
+                             Style="{StaticResource ImageButtonStyle}"
+                             Padding="10"
+                             CornerRadius="15"
+                             IsVisible="{Binding IsModerator}" />
+            </StackLayout>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

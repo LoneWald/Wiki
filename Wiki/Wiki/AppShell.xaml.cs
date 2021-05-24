@@ -1,4 +1,4 @@
-﻿using GameWiki.Models;
+﻿using Wiki.Models;
 using System;
 using System.Collections.Generic;
 using Wiki.ViewModels;
@@ -12,7 +12,6 @@ namespace Wiki
         public AppShell()
         {
             InitializeComponent();
-            Routing.RegisterRoute(nameof(ItemDetailPage), typeof(ItemDetailPage));
         }
 
     }

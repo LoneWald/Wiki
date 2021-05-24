@@ -4,7 +4,7 @@ using System.Text;
 using Wiki.Models.Login;
 using Wiki.Models.Register;
 
-namespace GameWiki.Models
+namespace Wiki.Models
 {
     public class Account
     {
@@ -13,8 +13,8 @@ namespace GameWiki.Models
         public string login { get; set; }
         public string password { get; set; }
         public string nickname { get; set; }
-        public bool? isModerator { get; set; }
-        public List<string> characters { get; set; }
+        public bool isModerator { get; set; }
+        //public List<string> characters { get; set; }
 
         public Account()
         {
@@ -23,8 +23,8 @@ namespace GameWiki.Models
             login = null;
             password = null;
             nickname = null;
-            isModerator = null;
-            characters = null;
+            isModerator = false;
+            //characters = null;
         }
 
         public Account(RegisterApiResponseModel user)
@@ -35,7 +35,7 @@ namespace GameWiki.Models
             password = user.password;
             nickname = user.nickname;
             isModerator = user.isModerator;
-            characters = user.characters;
+            //characters = user.characters;
         }
 
         public Account(LoginApiResponseModel user)
@@ -46,7 +46,7 @@ namespace GameWiki.Models
             password = user.password;
             nickname = user.nickname;
             isModerator = user.isModerator;
-            characters = user.characters;
+            //characters = user.characters;
         }
     }
 

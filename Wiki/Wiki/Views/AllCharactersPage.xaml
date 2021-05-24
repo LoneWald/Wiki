@@ -1,0 +1,285 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Wiki.Views.AllCharactersPage"
+             xmlns:model="clr-namespace:Wiki.Models.ResponseModels"
+             xmlns:local="clr-namespace:Wiki.ViewModels"
+             Title="{Binding Title}"
+             Style="{StaticResource ContentPageStyle}">
+
+    <ContentPage.Resources>
+        <Style x:Key="CharacterDescriptionStyle"
+               TargetType="Label">
+            <Setter Property="FontSize"
+                    Value="18" />
+            <Setter Property="TextColor"
+                    Value="{StaticResource TextColor}" />
+            <Setter Property="VerticalOptions"
+                    Value="Center" />
+            <Setter Property="HorizontalOptions"
+                    Value="Start" />
+        </Style>
+
+    </ContentPage.Resources>
+    <ContentPage.Content>
+        <StackLayout>
+            <StackLayout Spacing="10">
+                <RefreshView x:DataType="local:AllCharactersPageViewModel"
+                             x:Name="RefreshViewCharacters"
+                             Command="{Binding LoadCharactersCommand}"
+                             IsRefreshing="{Binding IsBusy, Mode=TwoWay}"
+                             RefreshColor="{StaticResource Primary}"
+                             Padding="0, 10">
+                    <CollectionView x:Name="ItemsListView"
+                                    ItemsSource="{Binding Characters}"
+                                    SelectionMode="None">
+                        <CollectionView.ItemsLayout>
+                            <LinearItemsLayout Orientation="Vertical"
+                                               ItemSpacing="10" />
+                        </CollectionView.ItemsLayout>
+                        <CollectionView.ItemTemplate>
+                            <DataTemplate>
+                                <Frame BorderColor="{StaticResource TextColor}"
+                                       x:DataType="model:CharactersApiResponseModel"
+                                       CornerRadius="15"
+                                       Padding="20, 5, 20, 0"
+                                       BackgroundColor="{StaticResource Accent}">
+                                    <StackLayout>
+                                        <StackLayout Orientation="Horizontal"
+                                                     Padding="10, 10, 20, 0"
+                                                     Margin="0, 0, 0, 0">
+                                            <Image Source="icon_crown.png"
+                                                   Margin="5, 0"
+                                                   Style="{StaticResource Image_icon}">
+                                            </Image>
+                                            <Label x:Name="characterName"
+                                                   Text="{Binding Name}"
+                                                   FontSize="25"
+                                                   HorizontalOptions="Start"
+                                                   Style="{StaticResource CharacterDescriptionStyle}" />
+                                            <Label x:Name="characterClass"
+                                                   FontSize="20"
+                                                   Text="{Binding Characterclass.Name}"
+                                                   HorizontalOptions="EndAndExpand"
+                                                   Style="{StaticResource CharacterDescriptionStyle}" />
+                                        </StackLayout>
+                                        <StackLayout Orientation="Horizontal">
+                                            <BoxView BackgroundColor="Black"
+                                                     HeightRequest="1"
+                                                     VerticalOptions="Center"
+                                                     HorizontalOptions="FillAndExpand" />
+                                            <Label HorizontalOptions="Center"
+                                                   Text="Stats"
+                                                   FontSize="20"
+                                                   Style="{StaticResource CharacterDescriptionStyle}" />
+                                            <BoxView BackgroundColor="Black"
+                                                     HeightRequest="1"
+                                                     VerticalOptions="Center"
+                                                     HorizontalOptions="FillAndExpand" />
+                                        </StackLayout>
+
+                                        <StackLayout>
+                                            <Grid ColumnSpacing="15"
+                                                  Padding="20, 0"
+                                                  Margin="20, 0"
+                                                  RowSpacing="0">
+                                                <Grid.RowDefinitions>
+                                                    <RowDefinition />
+                                                    <RowDefinition />
+                                                    <RowDefinition />
+                                                </Grid.RowDefinitions>
+                                                <Grid.ColumnDefinitions>
+                                                    <ColumnDefinition Width="*" />
+                                                    <ColumnDefinition Width="3*" />
+                                                    <ColumnDefinition Width="*" />
+                                                    <ColumnDefinition Width="*" />
+                                                </Grid.ColumnDefinitions>
+
+                                                <Label Grid.Column="0"
+                                                       Grid.Row="0"
+                                                       Text="Lvl"
+                                                       Style="{StaticResource CharacterDescriptionStyle}" />
+                                                <Label Grid.Column="1"
+                                                       Grid.Row="0"
+                                                       x:Name="CharacterLevel"
+                                                       Text="{Binding Level}"
+                                                       Style="{StaticResource CharacterDescriptionStyle}" />
+                                                <Label Grid.Column="0"
+                                                       Grid.Row="1"
+                                                       Text="HP"
+                                                       Style="{StaticResource CharacterDescriptionStyle}" />
+                                                <Label Grid.Column="1"
+                                                       Grid.Row="1"
+                                                       x:Name="CharacterHP"
+                                                       Text="{Binding Hp}"
+                                                       Style="{StaticResource CharacterDescriptionStyle}" />
+                                                <Label Grid.Column="0"
+                                                       Grid.Row="2"
+                                                       Text="MP"
+                                                       Style="{StaticResource CharacterDescriptionStyle}" />
+                                                <Label Grid.Column="1"
+                                                       Grid.Row="2"
+                                                       x:Name="CharacterMP"
+                                                       Text="{Binding Mp}"
+                                                       Style="{StaticResource CharacterDescriptionStyle}" />
+                                                <Label Grid.Column="2"
+                                                       Grid.Row="0"
+                                                       Text="Str"
+                                                       Style="{StaticResource CharacterDescriptionStyle}" />
+                                                <Label Grid.Column="3"
+                                                       Grid.Row="0"
+                                                       x:Name="CharacterStr"
+                                                       Text="{Binding Strength}"
+                                                       Style="{StaticResource CharacterDescriptionStyle}" />
+                                                <Label Grid.Column="2"
+                                                       Grid.Row="1"
+                                                       Text="Agi"
+                                                       Style="{StaticResource CharacterDescriptionStyle}" />
+                                                <Label Grid.Column="3"
+                                                       Grid.Row="1"
+                                                       x:Name="CharacterAgi"
+                                                       Text="{Binding Agility}"
+                                                       Style="{StaticResource CharacterDescriptionStyle}" />
+                                                <Label Grid.Column="2"
+                                                       Grid.Row="2"
+                                                       Text="Int"
+                                                       Style="{StaticResource CharacterDescriptionStyle}" />
+                                                <Label Grid.Column="3"
+                                                       Grid.Row="2"
+                                                       x:Name="CharacterInt"
+                                                       Text="{Binding Intelligence}"
+                                                       Style="{StaticResource CharacterDescriptionStyle}" />
+                                            </Grid>
+
+                                            <StackLayout Orientation="Horizontal">
+                                                <BoxView BackgroundColor="Black"
+                                                         HeightRequest="1"
+                                                         VerticalOptions="Center"
+                                                         HorizontalOptions="FillAndExpand" />
+                                                <Label HorizontalOptions="Center"
+                                                       Text="Social"
+                                                       FontSize="20"
+                                                       Style="{StaticResource CharacterDescriptionStyle}" />
+                                                <BoxView BackgroundColor="Black"
+                                                         HeightRequest="1"
+                                                         VerticalOptions="Center"
+                                                         HorizontalOptions="FillAndExpand" />
+                                            </StackLayout>
+                                            <FlexLayout Wrap="Wrap"
+                                                        JustifyContent="SpaceAround">
+                                                <Frame BorderColor="{StaticResource TextColor}"
+                                                       CornerRadius="15"
+                                                       Padding="10, 3"
+                                                       Margin="2"
+                                                       HeightRequest="35"
+                                                       BackgroundColor="{StaticResource Accent}">
+                                                    <StackLayout Orientation="Horizontal"
+                                                                 HorizontalOptions="Center">
+                                                        <Label Text="Profession:"
+                                                               HorizontalOptions="End"
+                                                               FontSize="15"
+                                                               Style="{StaticResource CharacterDescriptionStyle}" />
+                                                        <Label x:Name="CharacterProfession"
+                                                               HorizontalOptions="Start"
+                                                               FontSize="15"
+                                                               Text="{Binding Characterprofession.Name}"
+                                                               Style="{StaticResource CharacterDescriptionStyle}" />
+                                                    </StackLayout>
+                                                </Frame>
+                                                <Frame BorderColor="{StaticResource TextColor}"
+                                                       CornerRadius="15"
+                                                       Padding="10, 3"
+                                                       Margin="2"
+                                                       HorizontalOptions="Center"
+                                                       HeightRequest="35"
+                                                       BackgroundColor="{StaticResource Accent}">
+
+                                                    <StackLayout Orientation="Horizontal"
+                                                                 HorizontalOptions="Center">
+                                                        <Label Text="Guild:"
+                                                               HorizontalOptions="End"
+                                                               FontSize="15"
+                                                               Style="{StaticResource CharacterDescriptionStyle}" />
+
+                                                        <Label x:Name="CharacterGuild"
+                                                               Text="{Binding Guild.Name}"
+                                                               HorizontalOptions="Start"
+                                                               FontSize="15"
+                                                               Style="{StaticResource CharacterDescriptionStyle}" />
+                                                    </StackLayout>
+                                                </Frame>
+                                            </FlexLayout>
+                                            <StackLayout Orientation="Horizontal">
+                                                <BoxView BackgroundColor="Black"
+                                                         HeightRequest="1"
+                                                         VerticalOptions="Center"
+                                                         HorizontalOptions="FillAndExpand" />
+                                                <Label HorizontalOptions="Center"
+                                                       Text="Owner"
+                                                       FontSize="20"
+                                                       Style="{StaticResource CharacterDescriptionStyle}" />
+                                                <BoxView BackgroundColor="Black"
+                                                         HeightRequest="1"
+                                                         VerticalOptions="Center"
+                                                         HorizontalOptions="FillAndExpand" />
+                                            </StackLayout>
+                                            <!--<StackLayout Margin="0, 0, 0, 10">
+                                                <Grid ColumnSpacing="10"
+                                                      RowSpacing="10">
+                                                    <Grid.RowDefinitions>
+                                                        <RowDefinition />
+                                                        <RowDefinition />
+                                                    </Grid.RowDefinitions>
+                                                    <Grid.ColumnDefinitions>
+                                                        <ColumnDefinition Width="auto" />
+                                                        <ColumnDefinition Width="*" />
+                                                    </Grid.ColumnDefinitions>
+                                                    <Label Grid.Column="0"
+                                                           Grid.Row="0"
+                                                           Text="Email:"
+                                                           Style="{StaticResource CharacterDescriptionStyle}" />
+                                                    <Label Grid.Column="1"
+                                                           Grid.Row="0"
+                                                           HorizontalOptions="Center"
+                                                           x:Name="AccountEmail"
+                                                           Text="{Binding Account.email}"
+                                                           Style="{StaticResource CharacterDescriptionStyle}" />
+                                                    <Label Grid.Column="0"
+                                                           Grid.Row="1"
+                                                           Text="Nick:"
+                                                           Style="{StaticResource CharacterDescriptionStyle}" />
+                                                    <Label Grid.Column="1"
+                                                           Grid.Row="1"
+                                                           HorizontalOptions="Center"
+                                                           x:Name="AccountNickname"
+                                                           Text="{Binding Account.nickname}"
+                                                           Style="{StaticResource CharacterDescriptionStyle}" />
+                                                </Grid>
+                                            </StackLayout> -->
+
+                                            <StackLayout Margin="0, 0, 0, 10">
+                                                <Frame BorderColor="{StaticResource TextColor}"
+                                                       CornerRadius="25"
+                                                       Padding="15, 5, 15, 15"
+                                                       Margin="2"
+                                                       HorizontalOptions="Center"
+                                                       HeightRequest="35"
+                                                       BackgroundColor="{StaticResource Accent}">
+                                                    <Label HorizontalOptions="Center"
+                                                           x:Name="AccountNickname"
+                                                           FontSize="30"
+                                                           Text="{Binding Account.nickname}"
+                                                           Style="{StaticResource CharacterDescriptionStyle}" />
+                                                </Frame>
+                                            </StackLayout>
+                                        </StackLayout>
+                                    </StackLayout>
+                                </Frame>
+                            </DataTemplate>
+                        </CollectionView.ItemTemplate>
+                    </CollectionView>
+                </RefreshView>
+            </StackLayout>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

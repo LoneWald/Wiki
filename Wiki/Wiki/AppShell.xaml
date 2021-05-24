@@ -30,8 +30,7 @@
     </Shell.Resources>
 
     <TabBar>
-        <ShellContent x:Name="Menu" Title="Menu" Icon="icon_category.png" Route="MenuPage" ContentTemplate="{DataTemplate local:MenuPage}" />
-        <ShellContent Title="News" Icon="icon_feed.png" ContentTemplate="{DataTemplate local:ItemDetailPage}" />
+        <ShellContent x:Name="SelectMenu" Title="Select" Icon="icon_category.png" Route="MenuPage" ContentTemplate="{DataTemplate local:MenuPage}" />
         <ShellContent Title="Account" Icon="icon_account.png" Route="Account" ContentTemplate="{DataTemplate local:AccountPage}" />
     </TabBar>
 

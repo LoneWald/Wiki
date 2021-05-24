@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Runtime.CompilerServices;
 using Wiki.Models;
+using Wiki.Models.ResponseModels;
 using Wiki.Services;
 using Xamarin.Forms;
 
@@ -10,7 +11,8 @@ namespace Wiki.ViewModels
 {
     public class BaseViewModel : INotifyPropertyChanged
     {
-        public IDataStore<MenuSection> DataStore => DependencyService.Get<IDataStore<MenuSection>>();
+        public IDataStore<MenuSection> DataStoreMenuSection => DependencyService.Get<IDataStore<MenuSection>>();
+        public IDataStore<CharactersApiResponseModel> DataStoreCharacters => DependencyService.Get<IDataStore<CharactersApiResponseModel>>();
 
         bool isBusy = false;
         public bool IsBusy

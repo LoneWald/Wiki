@@ -3,7 +3,7 @@ using Wiki.Models.Register;
 using System;
 using System.Collections.Generic;
 using System.Text;
-using GameWiki.Models;
+using Wiki.Models;
 
 namespace Wiki.Models.Users
 {

@@ -1,0 +1,174 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Wiki.Views.NewCharacterPage"
+             BackgroundColor="{StaticResource Accent}">
+
+    <ContentPage.Resources>
+        
+        <Style x:Key="CreateButtonStyle"
+               TargetType="Button">
+            <Setter Property="BackgroundColor"
+                    Value="{StaticResource Accent}"></Setter>
+            <Setter Property="TextColor"
+                    Value="{StaticResource TextColor}"></Setter>
+            <Setter Property="Font"
+                    Value="22"></Setter>
+            <Setter Property="Margin"
+                    Value="30, 0"></Setter>
+        </Style>
+
+        <Style x:Key="LabelStyle"
+               TargetType="Label">
+            <Setter Property="FontSize"
+                    Value="18" />
+            <Setter Property="TextColor"
+                    Value="{StaticResource TextColor}" />
+            <Setter Property="VerticalOptions"
+                    Value="Center" />
+            <Setter Property="HorizontalOptions"
+                    Value="Start" />
+        </Style>
+
+    </ContentPage.Resources>
+    
+    <ContentPage.Content>
+        <StackLayout Margin="0, 20"
+                     VerticalOptions="FillAndExpand">
+            <StackLayout Padding="20, 0, 20, 0">
+                <Label Text="New Character" 
+                       Margin="0, 10"
+                       HorizontalOptions="Center"
+                       FontSize="40"
+                       Style="{StaticResource LabelStyle}"/>
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="*" />
+                        <RowDefinition Height="*" />
+                        <RowDefinition Height="*" />
+                        <RowDefinition Height="*" />
+                        <RowDefinition Height="*" />
+                        <RowDefinition Height="*" />
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*" />
+                        <ColumnDefinition Width="*" />
+                        <ColumnDefinition Width="*" />
+                    </Grid.ColumnDefinitions>
+                <StackLayout Grid.Column="0"
+                             Grid.Row="0"
+                             Grid.ColumnSpan="3"
+                             Orientation="Horizontal">
+                    <Label Text="Name:"
+                           Style="{StaticResource LabelStyle}" />
+                    <Entry x:Name="NameForm"
+                           HorizontalOptions="FillAndExpand"
+                           BackgroundColor="{StaticResource Accent}"></Entry>
+                </StackLayout>
+                <StackLayout Grid.Column="0"
+                             Grid.Row="1"
+                             Orientation="Horizontal">
+                    <Label Text="Level:"
+                           Style="{StaticResource LabelStyle}" />
+                    <Entry x:Name="LevelForm"
+                           HorizontalOptions="FillAndExpand"
+                           BackgroundColor="{StaticResource Accent}"></Entry>
+                </StackLayout>
+                <StackLayout Grid.Column="1"
+                             Grid.Row="1"
+                             Orientation="Horizontal">
+                    <Label Text="HP:"
+                           Style="{StaticResource LabelStyle}" />
+                    <Entry x:Name="HPForm"
+                           HorizontalOptions="FillAndExpand"
+                           BackgroundColor="{StaticResource Accent}"></Entry>
+                </StackLayout>
+                <StackLayout Grid.Column="2"
+                             Grid.Row="1"
+                             Orientation="Horizontal">
+                    <Label Text="MP:"
+                           Style="{StaticResource LabelStyle}" />
+                    <Entry x:Name="MPForm"
+                           HorizontalOptions="FillAndExpand"
+                           BackgroundColor="{StaticResource Accent}"></Entry>
+                </StackLayout>
+                    <StackLayout Grid.Column="0"
+                                 Grid.Row="2"
+                                 Orientation="Horizontal">
+                        <Label Text="Str:"
+                               Style="{StaticResource LabelStyle}" />
+                        <Entry x:Name="StrForm"
+                               HorizontalOptions="FillAndExpand"
+                               BackgroundColor="{StaticResource Accent}"></Entry>
+                    </StackLayout>
+                    <StackLayout Grid.Column="1"
+                                 Grid.Row="2"
+                                 Orientation="Horizontal">
+                        <Label Text="Agi:"
+                               Style="{StaticResource LabelStyle}" />
+                        <Entry x:Name="AgiForm"
+                               HorizontalOptions="FillAndExpand"
+                               BackgroundColor="{StaticResource Accent}"></Entry>
+                    </StackLayout>
+                    <StackLayout Grid.Column="2"
+                                 Grid.Row="2"
+                                 Orientation="Horizontal">
+                        <Label Text="Int:"
+                               Style="{StaticResource LabelStyle}" />
+                        <Entry x:Name="IntForm"
+                               HorizontalOptions="FillAndExpand"
+                               BackgroundColor="{StaticResource Accent}"></Entry>
+                    </StackLayout>
+                    <StackLayout Grid.Column="0"
+                             Grid.Row="3"
+                             Grid.ColumnSpan="3"
+                             Orientation="Horizontal">
+                        <Label Text="Class:"
+                               Style="{StaticResource LabelStyle}" />
+                        <Picker x:Name="ClassPicker"
+                                Title="Class"
+                                ItemsSource="{Binding CharacterClassesName }"
+                                HorizontalTextAlignment="Center"
+                                HorizontalOptions="FillAndExpand"></Picker>
+                    </StackLayout>
+                    <StackLayout Grid.Column="0"
+                                 Grid.Row="4"
+                                 Grid.ColumnSpan="3"
+                                 Orientation="Horizontal">
+                        <Label Text="Profession:"
+                               Style="{StaticResource LabelStyle}" />
+                        <Picker x:Name="ProfessionPicker"
+                                Title="Profession"
+                                HorizontalTextAlignment="Center"
+                                ItemsSource="{Binding CharacterProfessionsName}"
+                                HorizontalOptions="FillAndExpand"></Picker>
+                    </StackLayout>
+                    <StackLayout Grid.Column="0"
+                                 Grid.Row="5"
+                                 Grid.ColumnSpan="3"
+                                 Orientation="Horizontal">
+                        <Label Text="Guild:"
+                               Style="{StaticResource LabelStyle}" />
+                        <Picker x:Name="GuildPicker"
+                                Title="Guilds"
+                                HorizontalTextAlignment="Center"
+                                ItemsSource="{Binding GuildsName}"
+                                HorizontalOptions="FillAndExpand"></Picker>
+                    </StackLayout>
+                </Grid>
+
+                
+            </StackLayout>
+            <StackLayout Orientation="Horizontal"
+                         VerticalOptions="EndAndExpand"
+                         Margin="0, 10">
+                <Button x:Name="CreateCharacterButton"
+                        HorizontalOptions="CenterAndExpand"
+                        Text="Create"
+                        Clicked="AddCharacterClick"
+                        Style="{StaticResource Key=CreateButtonStyle}">
+                </Button>
+            </StackLayout>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

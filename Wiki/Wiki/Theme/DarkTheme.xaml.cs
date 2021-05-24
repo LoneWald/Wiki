@@ -7,12 +7,12 @@ using System.Threading.Tasks;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
-namespace Wiki.Views
+namespace Wiki.Theme
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
-    public partial class CharactersPage : ContentPage
+    public partial class DarkTheme : ContentPage
     {
-        public CharactersPage()
+        public DarkTheme()
         {
             InitializeComponent();
         }

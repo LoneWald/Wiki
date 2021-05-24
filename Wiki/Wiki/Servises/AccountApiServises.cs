@@ -21,7 +21,7 @@ namespace Wiki.Servises
         public AccountApiServises()
             : base()
         {
-            _registerPath = "api/Accounts/adds"; // adds для закоменченого
+            _registerPath = "api/Accounts/add"; // adds для закоменченого for from Headers
             _loginPath = "api/Accounts/auth";
         }
 
@@ -57,7 +57,7 @@ namespace Wiki.Servises
                 */
                 
                 var content = new StringContent(JsonConvert.SerializeObject(registerRequestModel), Encoding.UTF8, "application/json");
-                var response = await client.PostAsync(_registerPath, content);
+                var response = await client.PostAsync(client.BaseAddress + _registerPath, content);
                 response.EnsureSuccessStatusCode();
                 using (var stream = await response.Content.ReadAsStreamAsync())
                 using (var reader = new StreamReader(stream))

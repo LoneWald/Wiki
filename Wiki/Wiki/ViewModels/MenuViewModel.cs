@@ -32,7 +32,7 @@ namespace Wiki.ViewModels
             try
             {
                 Sections.Clear();
-                var sections = await DataStore.GetItemsAsync(true);
+                var sections = await DataStoreMenuSection.GetItemsAsync(true);
                 foreach (var section in sections)
                 {
                     Sections.Add(section);
@@ -70,7 +70,7 @@ namespace Wiki.ViewModels
                 return;
 
             // This will push the ItemDetailPage onto the navigation stack
-            await Shell.Current.GoToAsync($"{nameof(ItemDetailPage)}?{nameof(MenuSectionDetailViewModel.SectionId)}={section.Id}");
+            //await Shell.Current.GoToAsync($"{nameof(ItemDetailPage)}?{nameof(MenuSectionDetailViewModel.SectionId)}={section.Id}");
             /*
             switch (section.Id)
             {

@@ -1,0 +1,73 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Wiki.Views.NewCharacterClassPage"
+             Title="{Binding Title}"
+             Style="{StaticResource ContentPageStyle}">
+    <ContentPage.Resources>
+
+        <Style x:Key="CreateButtonStyle"
+               TargetType="Button">
+            <Setter Property="BackgroundColor"
+                    Value="{StaticResource Accent}"></Setter>
+            <Setter Property="TextColor"
+                    Value="{StaticResource TextColor}"></Setter>
+            <Setter Property="Font"
+                    Value="22"></Setter>
+        </Style>
+
+        <Style x:Key="LabelStyle"
+               TargetType="Label">
+            <Setter Property="FontSize"
+                    Value="18" />
+            <Setter Property="TextColor"
+                    Value="{StaticResource TextColor}" />
+            <Setter Property="VerticalOptions"
+                    Value="Center" />
+            <Setter Property="HorizontalOptions"
+                    Value="Start" />
+        </Style>
+
+    </ContentPage.Resources>
+
+    <ContentPage.Content>
+        <StackLayout Margin="0, 20"
+                     VerticalOptions="FillAndExpand">
+            <StackLayout Padding="20, 0">
+                <Label Text="New Class"
+                       Margin="0, 10, 0, 20"
+                       HorizontalOptions="Center"
+                       FontSize="40"
+                       Style="{StaticResource LabelStyle}" />
+                <StackLayout Orientation="Horizontal">
+                    <Label Text="Name:"
+                           Style="{StaticResource LabelStyle}" />
+                    <Entry x:Name="NameForm"
+                           HorizontalOptions="FillAndExpand"
+                           BackgroundColor="{StaticResource Accent}"></Entry>
+                </StackLayout>
+                <StackLayout>
+                    <Frame BorderColor="{StaticResource TextColor}"
+                           CornerRadius="1"
+                           Padding="20, 5, 20, 0"
+                           BackgroundColor="{StaticResource Accent}">
+                        <Editor x:Name="DescriptionForm" 
+                               Placeholder="This is the description of this class"
+                               HeightRequest="200"/>
+                    </Frame>
+                    
+                </StackLayout>
+            </StackLayout>
+            <StackLayout Orientation="Horizontal"
+                         VerticalOptions="EndAndExpand"
+                         Margin="0, 10">
+                <Button x:Name="CreateClassButton"
+                        HorizontalOptions="CenterAndExpand"
+                        Text="Create"
+                        Clicked="CreateClassClick"
+                        Style="{StaticResource Key=CreateButtonStyle}">
+                </Button>
+            </StackLayout>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>
